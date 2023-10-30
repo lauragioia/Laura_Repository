@@ -9,6 +9,17 @@ document.addEventListener("DOMContentLoaded", getTodos);
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteTodo);
 filterOption.addEventListener("click", filterTodo);
+// Add a new task to the list when the form is submitted
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const taskInput = document.querySelector(".todo-input");
+  const taskText = taskInput.value.trim();
+
+  if (taskText) {
+    addTodo(taskText);
+    taskInput.value = ""; // Clear the input field
+  }
+});
 
 // Functions
 
@@ -157,4 +168,37 @@ function getTodos() {
       todoDiv.classList.add("completed");
     }
   });
+
+function filterTodo() {
+  const todos = document.querySelector(".todo-list").children;
+  const viewOption = document.querySelector(".filter-todo");
+  for (const todo of todos) {
+    switch (viewOption.value) {
+      case "all":
+        todo.style.display = "flex";
+        break;
+      case "completed":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "uncompleted":
+        if (!todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+      case "deleted":
+        if (todo.classList.contains("deleted")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        break;
+    }
+  }
+}
 }

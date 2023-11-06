@@ -8,18 +8,18 @@ body {
   min-width: 250px;
 }
 
-/* Include the padding and border in an element's total width and height */
+/* padding and border 
 * {
   box-sizing: border-box;
 }
 
-/* Remove margins and padding from the list */
+/* take away padding and border
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* Style the list items */
+/* list items */
 ul li {
   cursor: pointer;
   position: relative;
@@ -29,7 +29,7 @@ ul li {
   font-size: 18px;
   transition: 0.2s;
 
-  /* make the list items unselectable */
+  /* items unselectable */
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -41,19 +41,19 @@ ul li:nth-child(odd) {
   background: #f9f9f9;
 }
 
-/* Darker background-color on hover */
+/* hover color */
 ul li:hover {
   background: #ddd;
 }
 
-/* When clicked on, add a background color and strike out text */
+/* strike out and change color */
 ul li.checked {
   background: #888;
   color: #fff;
   text-decoration: line-through;
 }
 
-/* Add a "checked" mark when clicked on */
+/* checkmark */
 ul li.checked::before {
   content: '';
   position: absolute;
@@ -67,7 +67,7 @@ ul li.checked::before {
   width: 7px;
 }
 
-/* Style the close button */
+/* close button */
 .close {
   position: absolute;
   right: 0;
@@ -80,7 +80,7 @@ ul li.checked::before {
   color: white;
 }
 
-/* Style the header */
+/* header */
 .header {
   background-color: #f44336;
   padding: 30px 40px;
@@ -88,14 +88,14 @@ ul li.checked::before {
   text-align: center;
 }
 
-/* Clear floats after the header */
+/* clear floats after header */
 .header:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Style the input */
+/* input style */
 input {
   margin: 0;
   border: none;
@@ -106,7 +106,7 @@ input {
   font-size: 16px;
 }
 
-/* Style the "Add" button */
+/* plus button */
 .addBtn {
   padding: 10px;
   width: 25%;
@@ -158,7 +158,7 @@ function loadTodoList() {
   }
 }
 
-// Save the todo list items to local storage
+// local storage
 function saveTodoList() {
   const todoList = [];
   const listItems = document.querySelectorAll("#myUL li");
@@ -170,7 +170,7 @@ function saveTodoList() {
   localStorage.setItem('todoList', JSON.stringify(todoList));
 }
 
-// Create a "close" button and append it to each list item
+// create close button
 function createCloseButtons() {
   const listItems = document.querySelectorAll("#myUL li");
   listItems.forEach((item) => {
@@ -184,11 +184,11 @@ function createCloseButtons() {
   });
 }
 
-// Load the initial todo list and create close buttons
+// load todo and crete close button
 loadTodoList();
 createCloseButtons();
 
-// Click on a close button to hide the current list item
+// hide unfinished list items
 var close = document.getElementsByClassName("close");
 for (var i = 0; i < close.length; i++) {
   close[i].onclick = function() {
@@ -198,7 +198,7 @@ for (var i = 0; i < close.length; i++) {
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
+// put checkmarks
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
@@ -207,7 +207,7 @@ list.addEventListener('click', function(ev) {
   }
 }, false);
 
-// Create a new list item when clicking on the "Add" button
+// Create a new list item
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
